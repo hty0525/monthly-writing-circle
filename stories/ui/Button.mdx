@@ -1,0 +1,30 @@
+import {
+	Meta,
+	Canvas,
+	Story,
+	ArgsTable,
+	PRIMARY_STORY,
+} from "storybook/blocks";
+import * as React from "react";
+import { Button } from "@/@core/ui";
+
+<Meta title="Docs/Button" component={Button} />
+
+# Button
+
+간단한 액션 트리거 컴포넌트입니다. 변형과 크기를 제공합니다.
+
+## 기본
+
+<Canvas>
+	<Story name="기본">
+		<Button>버튼</Button>
+	</Story>
+	<Story name="아웃라인">
+		<Button variant="outline">버튼</Button>
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Button} />

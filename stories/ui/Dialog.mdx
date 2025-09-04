@@ -1,0 +1,73 @@
+import {
+	Meta,
+	Canvas,
+	Story,
+	ArgsTable,
+	PRIMARY_STORY,
+} from "storybook/blocks";
+import * as React from "react";
+import {
+	Dialog,
+	DialogTrigger,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+	DialogDescription,
+	DialogFooter,
+	Button,
+} from "@/@core/ui";
+
+<Meta title="Docs/Dialog" component={Dialog} />
+
+# Dialog
+
+포커스 트랩과 오버레이를 포함한 간단한 모달 컴포넌트입니다.
+
+## 기본
+
+<Canvas>
+	<Story name="기본">
+		<Dialog>
+			<DialogTrigger asChild>
+				<Button variant="outline">열기</Button>
+			</DialogTrigger>
+			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>제목</DialogTitle>
+					<DialogDescription>설명</DialogDescription>
+				</DialogHeader>
+				<DialogFooter>
+					<Button>확인</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
+	</Story>
+	<Story name="컨트롤드">
+		{(() => {
+			const [open, setOpen] = React.useState(false);
+			return (
+				<Dialog open={open} onOpenChange={setOpen}>
+					<div className="flex gap-2">
+						<Button onClick={() => setOpen(true)}>열기</Button>
+						<DialogTrigger asChild>
+							<Button variant="outline">트리거</Button>
+						</DialogTrigger>
+					</div>
+					<DialogContent>
+						<DialogHeader>
+							<DialogTitle>컨트롤드</DialogTitle>
+							<DialogDescription>외부 상태로 제어</DialogDescription>
+						</DialogHeader>
+						<DialogFooter>
+							<Button onClick={() => setOpen(false)}>닫기</Button>
+						</DialogFooter>
+					</DialogContent>
+				</Dialog>
+			);
+		})()}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Dialog} />
